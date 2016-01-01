@@ -356,7 +356,7 @@ fi
     touch "${logs[@]}"
     
     for log in "${logs[@]}"; do
-        ln -lf /dev/stdout $log
+        ln -sf /dev/stdout $log
     done
     
     if [[ $(uname) == "Darwin" ]]; then
