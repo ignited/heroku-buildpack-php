@@ -355,6 +355,10 @@ fi
     
     touch "${logs[@]}"
     
+    for log in "${logs[@]}"; do
+        ln -lf /dev/stdout $log
+    done
+    
     if [[ $(uname) == "Darwin" ]]; then
         sedbufarg="-l" # mac/bsd sed: -l buffers on line boundaries
     else
