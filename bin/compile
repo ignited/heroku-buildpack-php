@@ -112,6 +112,14 @@ mkdir -p $BUILD_DIR/.heroku/php
 # set up Composer
 export COMPOSER_HOME=$CACHE_DIR/.composer
 mkdir -p $COMPOSER_HOME
+
+echo "--- Adding Composer Auth {$COMPOSER_HOME/auth.json}"
+
+#cause php
+AUTH=$(echo -n "$COMPOSER_AUTH" | base64 --decode)
+
+echo $AUTH > $COMPOSER_HOME/auth.json
+
 # we need to run things in /app because of compiled paths, set that up!
 mkdir -p /app/.heroku
 ln -s $BUILD_DIR/.heroku/php /app/.heroku/php
